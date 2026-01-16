@@ -43,10 +43,10 @@ const (
 type TexasHoldemRound string
 
 const (
-	RoundPreFlop TexasHoldemRound = "PRE_FLOP"
-	RoundFlop    TexasHoldemRound = "FLOP"
-	RoundTurn    TexasHoldemRound = "TURN"
-	RoundRiver   TexasHoldemRound = "RIVER"
+	RoundPreFlop  TexasHoldemRound = "PRE_FLOP"
+	RoundFlop     TexasHoldemRound = "FLOP"
+	RoundTurn     TexasHoldemRound = "TURN"
+	RoundRiver    TexasHoldemRound = "RIVER"
 	RoundShowdown TexasHoldemRound = "SHOWDOWN"
 )
 
@@ -67,10 +67,22 @@ const (
 	VariantOmaha       GameVariant = "OMAHA"
 )
 
-// Card represents a playing card
+// Suit represents a card suit (matches TypeScript SDK SUIT enum)
+type Suit int
+
+const (
+	SuitClubs    Suit = 1
+	SuitDiamonds Suit = 2
+	SuitHearts   Suit = 3
+	SuitSpades   Suit = 4
+)
+
+// Card represents a playing card (matches TypeScript SDK Card type)
 type Card struct {
-	Rank string
-	Suit string
+	Suit     Suit   // 1=Clubs, 2=Diamonds, 3=Hearts, 4=Spades
+	Rank     int    // 1-13 where 1=Ace, 10=Ten, 11=Jack, 12=Queen, 13=King
+	Value    int    // Calculated as 13 * (suit - 1) + (rank - 1)
+	Mnemonic string // e.g., "AS", "2C", "KH", "TD"
 }
 
 // Range represents the min and max betting amounts
