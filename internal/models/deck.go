@@ -119,6 +119,19 @@ func (d *Deck) Remaining() int {
 	return len(d.cards) - d.top
 }
 
+// DeckJSON represents the JSON structure for a deck
+type DeckJSON struct {
+	Cards []types.Card `json:"cards"`
+}
+
+// ToJson serializes the deck to a JSON-compatible structure
+// Matches TypeScript toJson()
+func (d *Deck) ToJson() DeckJSON {
+	return DeckJSON{
+		Cards: d.cards,
+	}
+}
+
 // createHash generates SHA256 hash of the deck
 // Matches TypeScript createHash()
 func (d *Deck) createHash() {
