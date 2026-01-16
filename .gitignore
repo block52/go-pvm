@@ -416,3 +416,15 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Go-specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+vendor/
+/server
